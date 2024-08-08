@@ -17,7 +17,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Notifications\SmsCodeNotification;
 use Filament\Tables\Actions\ImportAction;
+use Filament\Tables\Actions\ExportAction;
 use App\Filament\Imports\AttendeesImporter;
+use App\Filament\Exports\AttendeesExporter;
 use App\Mail\VerificationCodeMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -33,6 +35,10 @@ class AttendeesResource extends Resource
             ->schema([
                 Forms\Components\Group::make()
                     ->schema([
+                        Forms\Components\Toggle::make('pre_listed')
+                            ->inline(false)
+                            ->live()
+                            ->columnSpan(1),
                         Forms\Components\TextInput::make('attendee_code')
                             ->label('Attendee Code')
                             ->helperText('generated upon registration')
@@ -54,10 +60,12 @@ class AttendeesResource extends Resource
                             ->native(false)
                             ->relationship(name: 'status', titleAttribute: 'description')
                             ->columnSpan(3),
-                        Forms\Components\Toggle::make('pre_listed')
-                            ->inline(false)
-                            ->live()
-                            ->columnSpan(2),
+                        Forms\Components\Select::make('table_code')
+                            ->label('Table')
+                            ->native(false)
+                            ->relationship(name: 'venueTable', titleAttribute: 'description')
+                            ->columnSpan(3),
+
                     ])->columns(12)->columnSpanfull(),
                 Forms\Components\TextInput::make('first_name')
                     ->label('First Name')
@@ -130,6 +138,9 @@ class AttendeesResource extends Resource
                 Tables\Columns\TextColumn::make('attendee_code')
                     ->label('Code')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('venueTable.description')
+                    ->label('Table')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('first_name')
                     ->label('First Name')
                     ->searchable(),
@@ -164,7 +175,9 @@ class AttendeesResource extends Resource
             ])
             ->headerActions([
                 ImportAction::make()
-                    ->importer(AttendeesImporter::class)
+                    ->importer(AttendeesImporter::class),
+                ExportAction::make()
+                    ->exporter(AttendeesExporter::class),
             ])
             ->actions([
 //                Tables\ACtions\Action::make('Send Code')

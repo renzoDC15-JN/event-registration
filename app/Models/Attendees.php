@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Status;
 use App\Models\Events;
+use App\Models\VenueTables;
 
 class Attendees extends Model
 {
@@ -18,16 +19,17 @@ class Attendees extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'event_code',
+        'status_code',
+        'pre_listed',
+        'attendee_code',
+        'table_code',
         'first_name',
         'last_name',
+        'company_name',
+        'job_title',
         'email',
         'mobile',
-        'job_title',
-        'company_name',
-        'attendee_code',
-        'status_code',
-        'event_code',
-        'pre_listed',
     ];
 
     protected $casts = [
@@ -47,6 +49,11 @@ class Attendees extends Model
     public function event()
     {
         return $this->belongsTo(Events::class, 'event_code', 'code');
+    }
+
+    public function venueTable()
+    {
+        return $this->belongsTo(VenueTables::class, 'table_code', 'code');
     }
 
     public function generateUniqueCode():void

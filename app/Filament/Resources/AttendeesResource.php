@@ -169,6 +169,7 @@ class AttendeesResource extends Resource
             ->actions([
                 Tables\ACtions\Action::make('Send Code')
                     ->action(function(Attendees $record){
+                        $record->generateUniqueCode();
                         $record->notify(new SmsCodeNotification($record));
 //                        Mail::to($record->email)->send(new VerificationCodeMail($record));
                     }),

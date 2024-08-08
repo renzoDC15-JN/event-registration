@@ -22,14 +22,14 @@ class AttendeesImporter extends Importer
                 ->rules(['required', 'max:255']),
             ImportColumn::make('email')
                 ->requiredMapping()
-                ->rules(['required', 'email', 'max:255']),
+                ->rules([ 'email', 'max:255']),
             ImportColumn::make('mobile')
                 ->guess(['mobile','Phone number'])
-                ->rules(['required','numeric','digits:10']),
+                ->rules(['numeric','digits:10']),
             ImportColumn::make('job_title')
                 ->rules(['max:255']),
             ImportColumn::make('company_name')
-                ->rules(['max:255']),
+                ->rules(['required','max:255']),
 
         ];
     }
@@ -44,6 +44,7 @@ class AttendeesImporter extends Importer
            $this->data   // Attributes to update or set for the new record
         );
 
+        $attendee->generateUniqueCode();
         $attendee->pre_listed=true;
         $attendee->save();
         return $attendee;

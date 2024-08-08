@@ -1,7 +1,7 @@
 <section class="flex overflow-hidden flex-col pt-20 mx-auto w-full bg-white max-w-[480px]">
     <form wire:submit="submit">
     <div class="flex flex-col px-5 w-full">
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/1150049777057f1ceb6fa4c7d042ba273f3931b787d4511bb3413636c53c5033?apiKey=8596518292344287a6dbe083b6dc8023&&apiKey=8596518292344287a6dbe083b6dc8023" alt="Event logo or banner" class="object-contain self-center w-full aspect-[2.22] max-w-[326px]" />
+        <img loading="lazy" src="{{asset('images/Raemulan Lands Logo - with tagline 1.png')}}" alt="Event logo or banner" class="object-contain self-center w-full aspect-[2.22] max-w-[326px]" />
         <h1 wire:click="submit" class="self-start mt-11 text-2xl font-bold text-slate-800">Event Name</h1>
         <p class="self-start mt-2.5 text-xl text-slate-600">Event confirmation</p>
         <div class="flex flex-col mt-11 w-full">
@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="flex relative flex-col px-5 pt-6 pb-20 mt-1 w-full aspect-[0.961]">
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/1d0940c961dc6033671d474b0faa3133db06855ca0e96c9ab6b40821efa62912?apiKey=8596518292344287a6dbe083b6dc8023&&apiKey=8596518292344287a6dbe083b6dc8023" alt="" class="object-cover absolute inset-0 size-full" />
+        <img loading="lazy" src="{{asset('images/registration-bg.png')}}" alt="" class="object-cover absolute inset-0 size-full" />
         <div class="flex relative flex-col w-full">
             <div class="flex gap-1 items-start w-full">
                 <label for="last_name" class="text-base text-slate-600">Last Name</label>

@@ -1,0 +1,27 @@
+:root {
+    --danger-700: rgba(180, 23, 58, 1);
+    --grey-900: rgba(17, 24, 39, 1);
+    --white: rgba(255, 255, 255, 1);
+    --grey-300: rgba(209, 213, 219, 1);
+    --grey-700: rgba(55, 65, 81, 1);
+    --grey-500: rgba(107, 114, 128, 1);
+    --DM-sans-sm-14px-medium-font-family: "DM Sans", Helvetica;
+    --DM-sans-sm-14px-medium-font-weight: 500;
+    --DM-sans-sm-14px-medium-font-size: 14px;
+    --DM-sans-sm-14px-medium-letter-spacing: 0px;
+    --DM-sans-sm-14px-medium-line-height: 20px;
+    --DM-sans-sm-14px-medium-font-style: normal;
+    --DM-sans-base-16px-regular-font-family: "DM Sans", Helvetica;
+    --DM-sans-base-16px-regular-font-weight: 400;
+    --DM-sans-base-16px-regular-font-size: 16px;
+    --DM-sans-base-16px-regular-letter-spacing: 0px;
+    --DM-sans-base-16px-regular-line-height: 24px;
+    --DM-sans-base-16px-regular-font-style: normal;
+    --DM-sans-sm-14px-regular-font-family: "DM Sans", Helvetica;
+    --DM-sans-sm-14px-regular-font-weight: 400;
+    --DM-sans-sm-14px-regular-font-size: 14px;
+    --DM-sans-sm-14px-regular-letter-spacing: 0px;
+    --DM-sans-sm-14px-regular-line-height: 20px;
+    --DM-sans-sm-14px-regular-font-style: normal;
+    --shadow-xs: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);
+}

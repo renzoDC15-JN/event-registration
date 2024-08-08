@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\AttendeesResource\Pages;
 use App\Filament\Resources\AttendeesResource\RelationManagers;
 use App\Models\Attendees;
+use App\Models\Status;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -14,6 +15,8 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Notifications\SmsCodeNotification;
+use Filament\Tables\Actions\ImportAction;
+use App\Filament\Imports\AttendeesImporter;
 
 class AttendeesResource extends Resource
 {
@@ -25,18 +28,50 @@ class AttendeesResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Group::make()
+                    ->schema([
+                        Forms\Components\TextInput::make('attendee_code')
+                            ->label('Attendee Code')
+                            ->unique(ignoreRecord: true)
+                            ->maxLength(4)
+                            ->live()
+                            ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire, Forms\Components\TextInput $component) {
+                                $livewire->validateOnly($component->getStatePath());
+                            })
+                            ->readOnly()
+                            ->columnSpan(2),
+                        Forms\Components\Select::make('status_code')
+                            ->label('Status')
+                            ->native(false)
+                            ->options(
+                                Status::all()->pluck('description','code')
+                            )
+                            ->columnSpan(3),
+                        Forms\Components\Toggle::make('pre_listed')
+                            ->inline(false)
+                            ->live()
+                            ->columnSpan(2),
+                    ])->columns(12)->columnSpanfull(),
                 Forms\Components\TextInput::make('first_name')
                     ->label('First Name')
                     ->autocapitalize('words')
                     ->required()
                     ->maxLength(255)
-                    ->live(),
+                    ->live()
+                    ->columnSpan(4),
                 Forms\Components\TextInput::make('last_name')
                     ->label('Last Name')
                     ->autocapitalize('words')
                     ->required()
                     ->maxLength(255)
-                    ->live(),
+                    ->live()
+                    ->columnSpan(4),
+                Forms\Components\TextInput::make('job_title')
+                    ->label('Job Title')
+                    ->autocapitalize('words')
+                    ->maxLength(255)
+                    ->live()
+                    ->columnSpan(4),
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->unique(ignoreRecord: true)
@@ -45,7 +80,8 @@ class AttendeesResource extends Resource
                     ->live()
                     ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire, Forms\Components\TextInput $component) {
                         $livewire->validateOnly($component->getStatePath());
-                    }),
+                    })
+                    ->columnSpan(4),
                 Forms\Components\TextInput::make('mobile')
                     ->prefix('+63')
                     ->regex("/^[0-9]+$/")
@@ -54,33 +90,17 @@ class AttendeesResource extends Resource
                     ->live()
                     ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire, Forms\Components\TextInput $component) {
                         $livewire->validateOnly($component->getStatePath());
-                    }),
-                Forms\Components\TextInput::make('job_title')
-                    ->label('Job Title')
-                    ->autocapitalize('words')
-                    ->maxLength(255)
-                    ->live(),
+                    })
+                    ->columnSpan(4),
+
                 Forms\Components\TextInput::make('company_name')
                     ->label('Company Name')
                     ->autocapitalize('words')
                     ->maxLength(255)
-                    ->live(),
-                Forms\Components\TextInput::make('attendee_code')
-                    ->label('Attendee Code')
-                    ->unique(ignoreRecord: true)
-                    ->maxLength(4)
                     ->live()
-                    ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire, Forms\Components\TextInput $component) {
-                        $livewire->validateOnly($component->getStatePath());
-                    }),
-                Forms\Components\TextInput::make('status_code')
-                    ->label('Status')
-                    ->maxLength(255)
-                    ->live(),
-                Forms\Components\Toggle::make('pre_listed')
-                    ->inline()
-                    ->live(),
-            ]);
+                    ->columnSpan(4),
+
+            ])->columns(12);
     }
 
     public static function table(Table $table): Table
@@ -129,10 +149,14 @@ class AttendeesResource extends Resource
             ->filters([
                 //
             ])
+            ->headerActions([
+                ImportAction::make()
+                    ->importer(AttendeesImporter::class)
+            ])
             ->actions([
                 Tables\ACtions\Action::make('Send Code')
                     ->action(function(Attendees $record){
-                        dd($record->notify(new SmsCodeNotification("Welcome to Raemulan Lands Inc! Join us for {$record->title} on August 9, 2024 in {$record->place}. Your check-in pass code is: {$record->attendee_code}. Excited to meet and host you at the event!")));
+                        $record->notify(new SmsCodeNotification("Welcome to Raemulan Lands Inc! Join us for {$record->title} on August 9, 2024 in {$record->place}. Your check-in pass code is: {$record->attendee_code}. Excited to meet and host you at the event!"));
                     }),
                 Tables\Actions\EditAction::make(),
 //                Tables\Actions\DeleteAction::make(),

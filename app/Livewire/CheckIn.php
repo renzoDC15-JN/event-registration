@@ -4,10 +4,10 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
-class VIPReqistration extends Component
+class CheckIn extends Component
 {
     public function render()
     {
-        return view('livewire.v-i-p-reqistration');
+        return view('livewire.check-in');
     }
 }

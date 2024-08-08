@@ -1,0 +1,198 @@
+.VIP-guests {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.VIP-guests .div {
+    background-color: #ffffff;
+    width: 393px;
+    height: 852px;
+    position: relative;
+}
+
+.VIP-guests .overlap {
+    position: absolute;
+    width: 393px;
+    height: 409px;
+    top: 443px;
+    left: 0;
+    background-image: url(https://c.animaapp.com/IOeByyW5/img/mask-group@2x.png);
+    background-size: 100% 100%;
+}
+
+.VIP-guests .fields {
+    display: flex;
+    flex-direction: column;
+    width: 354px;
+    align-items: flex-start;
+    gap: 6px;
+    position: absolute;
+    top: 22px;
+    left: 19px;
+}
+
+.VIP-guests .label {
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.VIP-guests .text-wrapper {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Roboto", Helvetica;
+    font-weight: 400;
+    color: #576574;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.VIP-guests .required {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: var(--DM-sans-sm-14px-medium-font-family);
+    font-weight: var(--DM-sans-sm-14px-medium-font-weight);
+    color: var(--danger-700);
+    font-size: var(--DM-sans-sm-14px-medium-font-size);
+    letter-spacing: var(--DM-sans-sm-14px-medium-letter-spacing);
+    line-height: var(--DM-sans-sm-14px-medium-line-height);
+    white-space: nowrap;
+    font-style: var(--DM-sans-sm-14px-medium-font-style);
+}
+
+.VIP-guests .container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.VIP-guests .input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    position: relative;
+    flex: 1;
+    flex-grow: 1;
+    background-color: var(--white);
+    border-radius: 8px;
+    border: 1px solid;
+    border-color: var(--grey-300);
+    box-shadow: var(--shadow-xs);
+}
+
+.VIP-guests .text {
+    position: relative;
+    flex: 1;
+    margin-top: -1px;
+    font-family: "DM Sans", Helvetica;
+    font-weight: 400;
+    color: var(--grey-900);
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+}
+
+.VIP-guests .fields-2 {
+    top: 116px;
+    display: flex;
+    flex-direction: column;
+    width: 354px;
+    align-items: flex-start;
+    gap: 6px;
+    position: absolute;
+    left: 19px;
+}
+
+.VIP-guests .group {
+    position: absolute;
+    width: 356px;
+    height: 71px;
+    top: 261px;
+    left: 20px;
+}
+
+.VIP-guests .overlap-group {
+    position: relative;
+    width: 354px;
+    height: 71px;
+    background-color: #cc035c;
+    border-radius: 25px;
+    border: 5px solid;
+    border-color: #8b003d33;
+}
+
+.VIP-guests .text-wrapper-2 {
+    position: absolute;
+    width: 94px;
+    top: 19px;
+    left: 125px;
+    font-family: "Roboto", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.VIP-guests .raemulan-lands-logo {
+    position: absolute;
+    width: 326px;
+    height: 147px;
+    top: 76px;
+    left: 34px;
+    object-fit: cover;
+}
+
+.VIP-guests .fields-3 {
+    top: 371px;
+    display: flex;
+    flex-direction: column;
+    width: 354px;
+    align-items: flex-start;
+    gap: 6px;
+    position: absolute;
+    left: 19px;
+}
+
+.VIP-guests .text-wrapper-3 {
+    top: 304px;
+    font-weight: 400;
+    color: #576574;
+    font-size: 20px;
+    position: absolute;
+    left: 19px;
+    font-family: "Roboto", Helvetica;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.VIP-guests .event-name {
+    top: 265px;
+    font-weight: 700;
+    color: #222f3e;
+    font-size: 25px;
+    position: absolute;
+    left: 19px;
+    font-family: "Roboto", Helvetica;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}

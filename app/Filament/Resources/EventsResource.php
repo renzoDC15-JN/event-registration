@@ -28,11 +28,13 @@ class EventsResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('code')
                     ->required()
+                    ->unique(ignoreRecord: true)
                     ->maxLength(4)
                     ->columnSpan(3),
                 Forms\Components\TextInput::make('description')
                     ->label('Name')
                     ->required()
+                    ->unique(ignoreRecord: true)
                     ->maxLength(255)
                     ->columnSpan(9),
             ])->columns(12);

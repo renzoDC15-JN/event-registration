@@ -167,12 +167,12 @@ class AttendeesResource extends Resource
                     ->importer(AttendeesImporter::class)
             ])
             ->actions([
-                Tables\ACtions\Action::make('Send Code')
-                    ->action(function(Attendees $record){
-                        $record->generateUniqueCode();
-                        $record->notify(new SmsCodeNotification($record));
-//                        Mail::to($record->email)->send(new VerificationCodeMail($record));
-                    }),
+//                Tables\ACtions\Action::make('Send Code')
+//                    ->action(function(Attendees $record){
+//                        $record->generateUniqueCode();
+//                        $record->notify(new SmsCodeNotification($record));
+////                        Mail::to($record->email)->send(new VerificationCodeMail($record));
+//                    }),
                 Tables\Actions\EditAction::make(),
 //                Tables\Actions\DeleteAction::make(),
             ], position: ActionsPosition::BeforeCells)

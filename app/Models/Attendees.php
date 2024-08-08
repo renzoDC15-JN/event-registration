@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Status;
+use App\Models\Events;
 
 class Attendees extends Model
 {
@@ -24,6 +26,7 @@ class Attendees extends Model
         'company_name',
         'attendee_code',
         'status_code',
+        'event_code',
         'pre_listed',
     ];
 
@@ -34,6 +37,16 @@ class Attendees extends Model
     public function routeNotificationForEngageSpark()
     {
         return $this->mobile;
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class, 'status_code', 'code');
+    }
+
+    public function event()
+    {
+        return $this->belongsTo(Events::class, 'event_code', 'code');
     }
 
     public function generateUniqueCode():void

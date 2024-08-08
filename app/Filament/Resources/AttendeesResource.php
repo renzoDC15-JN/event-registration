@@ -6,6 +6,7 @@ use App\Filament\Resources\AttendeesResource\Pages;
 use App\Filament\Resources\AttendeesResource\RelationManagers;
 use App\Models\Attendees;
 use App\Models\Status;
+use App\Models\Events;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -46,16 +47,12 @@ class AttendeesResource extends Resource
                         Forms\Components\Select::make('event_code')
                             ->label('Event')
                             ->native(false)
-                            ->options(
-                                Status::all()->pluck('description','code')
-                            )
+                            ->relationship(name: 'event', titleAttribute: 'description')
                             ->columnSpan(3),
                         Forms\Components\Select::make('status_code')
                             ->label('Status')
                             ->native(false)
-                            ->options(
-                                Status::all()->pluck('description','code')
-                            )
+                            ->relationship(name: 'status', titleAttribute: 'description')
                             ->columnSpan(3),
                         Forms\Components\Toggle::make('pre_listed')
                             ->inline(false)
@@ -122,6 +119,14 @@ class AttendeesResource extends Resource
             ->persistFiltersInSession()
             ->deselectAllRecordsWhenFiltered(false)
             ->columns([
+                Tables\Columns\TextColumn::make('event.description')
+                    ->label('Event')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('status.description')
+                    ->label('Status')
+                    ->searchable(),
+                Tables\Columns\IconColumn::make('pre_listed')
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('attendee_code')
                     ->label('Code')
                     ->searchable(),
@@ -131,23 +136,20 @@ class AttendeesResource extends Resource
                 Tables\Columns\TextColumn::make('last_name')
                     ->label('Last Name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('mobile')
+                Tables\Columns\TextColumn::make('company_name')
+                    ->label('Company')
+                    ->words(5)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('job_title')
                     ->label('Job Title')
                     ->words(5)
                     ->searchable(),
-                Tables\Columns\TextColumn::make('company_name')
-                    ->label('Company')
-                    ->words(5)
+                Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('status_code')
-                    ->label('Status')
+                Tables\Columns\TextColumn::make('mobile')
                     ->searchable(),
-                Tables\Columns\IconColumn::make('pre_listed')
-                    ->boolean(),
+
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

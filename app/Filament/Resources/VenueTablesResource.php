@@ -18,6 +18,7 @@ class VenueTablesResource extends Resource
     protected static ?string $model = VenueTables::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Admin';
 
     public static function form(Form $form): Form
     {

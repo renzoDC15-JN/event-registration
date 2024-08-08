@@ -8,15 +8,16 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use LBHurtado\EngageSpark\EngageSparkChannel;
 use LBHurtado\EngageSpark\EngageSparkMessage;
+use App\Models\Attendees;
 class SmsCodeNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    protected string $content;
+    protected Attendees $attendee;
 
-    public function __construct(string $content)
+    public function __construct(Attendees $attendee)
     {
-        $this->content = $content;
+        $this->attendee = $attendee;
     }
 
     /**
@@ -35,9 +36,10 @@ class SmsCodeNotification extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->subject('Your Check-In Code for the Event')
+            ->view(
+            'mail.verification-code', ['attendee' => $this->attendee]
+        );
     }
 
     /**
@@ -55,7 +57,7 @@ class SmsCodeNotification extends Notification implements ShouldQueue
     public function toEngageSpark($notifiable)
     {
         return (new EngageSparkMessage())
-            ->content($this->content)
+            ->content("Welcome to Raemulan Lands Inc! Join us for {$this->attendee->title} on August 9, 2024 in {$this->attendee->place}. Your check-in pass code is: {$this->attendee->attendee_code}. Excited to meet and host you at the event!")
             ;
     }
 

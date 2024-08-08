@@ -10,10 +10,12 @@
         "aws/aws-sdk-php": "^3.317",
         "bezhansalleh/filament-shield": "^3.2",
         "filament/filament": "^3.2",
+        "filament/notifications": "^3.2",
         "howdu/filament-record-switcher": "^1.0",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
-        "lbhurtado/engagespark": "^3.7"
+        "lbhurtado/engagespark": "^3.7",
+        "pusher/pusher-php-server": "^7.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

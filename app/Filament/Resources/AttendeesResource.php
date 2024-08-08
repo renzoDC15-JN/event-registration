@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Notifications\SmsCodeNotification;
 use Filament\Tables\Actions\ImportAction;
 use App\Filament\Imports\AttendeesImporter;
+use App\Mail\VerificationCodeMail;
+use Illuminate\Support\Facades\Mail;
 
 class AttendeesResource extends Resource
 {
@@ -32,6 +34,7 @@ class AttendeesResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('attendee_code')
                             ->label('Attendee Code')
+                            ->helperText('generated upon registration')
                             ->unique(ignoreRecord: true)
                             ->maxLength(4)
                             ->live()
@@ -40,6 +43,13 @@ class AttendeesResource extends Resource
                             })
                             ->readOnly()
                             ->columnSpan(2),
+                        Forms\Components\Select::make('event_code')
+                            ->label('Event')
+                            ->native(false)
+                            ->options(
+                                Status::all()->pluck('description','code')
+                            )
+                            ->columnSpan(3),
                         Forms\Components\Select::make('status_code')
                             ->label('Status')
                             ->native(false)
@@ -73,9 +83,9 @@ class AttendeesResource extends Resource
                     ->live()
                     ->columnSpan(4),
                 Forms\Components\TextInput::make('email')
+                    ->required()
                     ->email()
                     ->unique(ignoreRecord: true)
-                    ->required()
                     ->maxLength(255)
                     ->live()
                     ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire, Forms\Components\TextInput $component) {
@@ -83,6 +93,7 @@ class AttendeesResource extends Resource
                     })
                     ->columnSpan(4),
                 Forms\Components\TextInput::make('mobile')
+                    ->required()
                     ->prefix('+63')
                     ->regex("/^[0-9]+$/")
                     ->minLength(10)
@@ -156,7 +167,8 @@ class AttendeesResource extends Resource
             ->actions([
                 Tables\ACtions\Action::make('Send Code')
                     ->action(function(Attendees $record){
-                        $record->notify(new SmsCodeNotification("Welcome to Raemulan Lands Inc! Join us for {$record->title} on August 9, 2024 in {$record->place}. Your check-in pass code is: {$record->attendee_code}. Excited to meet and host you at the event!"));
+                        $record->notify(new SmsCodeNotification($record));
+//                        Mail::to($record->email)->send(new VerificationCodeMail($record));
                     }),
                 Tables\Actions\EditAction::make(),
 //                Tables\Actions\DeleteAction::make(),

@@ -24,29 +24,29 @@ class AttendeesImporter extends Importer
                 ->requiredMapping()
                 ->rules(['required', 'email', 'max:255']),
             ImportColumn::make('mobile')
-                ->rules(['max:255']),
+                ->guess(['mobile','Phone number'])
+                ->rules(['required','numeric','digits:10']),
             ImportColumn::make('job_title')
                 ->rules(['max:255']),
             ImportColumn::make('company_name')
                 ->rules(['max:255']),
-            ImportColumn::make('attendee_code')
-                ->rules(['max:255']),
-            ImportColumn::make('status_code')
-                ->rules(['max:255']),
-            ImportColumn::make('pre_listed')
-                ->boolean()
-                ->rules(['boolean']),
+
         ];
     }
 
     public function resolveRecord(): ?Attendees
     {
-        // return Attendees::firstOrNew([
-        //     // Update existing records, matching them by `$this->data['column_name']`
-        //     'email' => $this->data['email'],
-        // ]);
+        $attendee = Attendees::updateOrCreate(
+            [
+                'first_name' => $this->data['first_name'],
+                'last_name' => $this->data['last_name'],
+            ], // Attributes to find the record
+           $this->data   // Attributes to update or set for the new record
+        );
 
-        return new Attendees();
+        $attendee->pre_listed=true;
+        $attendee->save();
+        return $attendee;
     }
 
     public static function getCompletedNotificationBody(Import $import): string

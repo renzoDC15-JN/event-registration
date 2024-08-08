@@ -35,7 +35,8 @@ class VIPRegistration extends Component
             $this->status=1;
             $this->json_path = asset('lottie_files/success.json');
             $this->dispatch('trigger_animation');
-            $attendee->notify(new SmsCodeNotification("Welcome to Raemulan Lands Inc! Join us for {$attendee->title} on August 9, 2024 in {$attendee->place}. Your check-in pass code is: {$attendee->attendee_code}. Excited to meet and host you at the event!"));
+            $attendee->generateUniqueCode();
+            $attendee->notify(new SmsCodeNotification($attendee));
 
         }else{
             $this->isOpen=true;

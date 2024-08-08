@@ -11,9 +11,9 @@
             </div>
             <div class="flex gap-2 items-center mt-1.5 w-full text-base text-gray-900 whitespace-nowrap">
                 <input type="text" id="first_name" name="first_name" wire:model="first_name" class="flex-1 shrink gap-2.5 self-stretch px-3.5 py-2.5 my-auto w-full bg-white rounded-lg shadow-sm min-w-[240px]" required />
-                <div>
-                    @error('first_name') <span class="error">{{ $message }}</span> @enderror
-                </div>
+            </div>
+            <div clas="flex gap-1 items-start w-full">
+                @error('first_name') <span class="text-sm font-medium leading-none text-rose-700">{{ $message }}</span> @enderror
             </div>
         </div>
     </div>
@@ -26,9 +26,9 @@
             </div>
             <div class="flex gap-2 items-center mt-1.5 w-full text-base text-gray-900 whitespace-nowrap">
                 <input type="text" id="last_name" name="last_name"  wire:model="last_name" class="flex-1 shrink gap-2.5 self-stretch px-3.5 py-2.5 my-auto w-full bg-white rounded-lg shadow-sm min-w-[240px]" required />
-                <div>
-                    @error('last_name') <span class="error">{{ $message }}</span> @enderror
-                </div>
+            </div>
+            <div clas="flex gap-1 items-start w-full">
+                @error('last_name') <span class="text-sm font-medium leading-none text-rose-700">{{ $message }}</span> @enderror
             </div>
             <div class="flex gap-1 items-start w-full mt-7">
                 <label for="mobile" class="text-base text-slate-600">Phone Number</label>

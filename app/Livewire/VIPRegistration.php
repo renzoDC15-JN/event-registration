@@ -26,7 +26,10 @@ class VIPRegistration extends Component
 
     public function submit(){
         $this->validate();
-       $attendee= Attendees::where('first_name',$this->first_name)->where('last_name',$this->last_name)->get()->first();
+       $attendee= Attendees::where('first_name',$this->first_name)
+           ->where('last_name',$this->last_name)
+           ->where('mobile',$this->mobile)
+           ->get()->first();
         if($attendee){
             $this->isOpen=true;
             $this->status=1;

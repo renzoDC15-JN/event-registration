@@ -3,11 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Livewire\VIPRegistration;
 use App\Livewire\CheckIn;
+use App\Livewire\Register;
 use App\Models\Attendees;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/register', Register::class);
 
 Route::get('/vip-register', VIPRegistration::class);
 Route::get('/check-in-code', CheckIn::class);

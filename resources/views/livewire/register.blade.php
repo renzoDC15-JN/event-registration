@@ -7,7 +7,7 @@
                 <header class="flex flex-col w-full max-w-[354px]">
                     <div class="flex gap-5 justify-between text-4xl font-bold whitespace-nowrap text-slate-800">
                         <h1>Register</h1>
-                        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/dd315a8c1923850d884c4603fbfa362c832e218e5c4d18cf595cee51452de1e0?placeholderIfAbsent=true&apiKey=8596518292344287a6dbe083b6dc8023" alt="" class="object-contain shrink-0 self-start aspect-square w-[35px]" />
+                        <img @click="window.location.href = '/check-in'" loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/dd315a8c1923850d884c4603fbfa362c832e218e5c4d18cf595cee51452de1e0?placeholderIfAbsent=true&apiKey=8596518292344287a6dbe083b6dc8023" alt="" class="object-contain shrink-0 self-start aspect-square w-[35px]" />
                     </div>
                     <p class="self-start mt-2 text-xl text-slate-600">Fill-out the form</p>
                 </header>
@@ -141,10 +141,7 @@
 
                 <div class="mt-10 flex flex-col-reverse justify-center md:flex-row sm:space-y-4 md:space-y-0 lg:sm:space-y-0 ">
                     <button @click="isOpen = false" class="mr-1 xs:mt-1 md:mt-0 lg:mt-0 xl:mt-0 bg-pink-700 text-white rounded-3xl px-8 py-3 md:px-16 md:py-6 w-full md:w-auto">
-                        Cancel
-                    </button>
-                    <button wire:click="confirm" class="bg-pink-700 text-white rounded-3xl px-8 py-3 md:px-16 md:py-6 w-full md:w-auto">
-                        Confirm & Checkin
+                        Ok
                     </button>
                 </div>
             </div>

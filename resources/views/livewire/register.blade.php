@@ -1,4 +1,4 @@
-<div>
+<div class="h-[1100px] overflow-hidden">
     {{-- Do your work, then step back. --}}
     <section class="flex overflow-hidden flex-col bg-white">
         <div class="flex relative flex-col justify-center items-center px-20 py-28 w-full min-h-[982px] max-md:px-5 max-md:py-24 max-md:max-w-full">
@@ -101,6 +101,7 @@
             x-transition:leave-end="opacity-0 transform scale-90"
             class="fixed inset-0 z-50 flex justify-center items-center"
             @click.away="isOpen = false"
+            x-cloak
         >
             <div class="bg-white rounded-3xl shadow-2xl p-5 md:p-12 max-w-[570px] min-w-[300px] w-full mx-auto">
                 <!-- Modal content -->
@@ -147,6 +148,7 @@
             </div>
         </article>
     </section>
+
 </div>
 <script>
     function validate(event) {

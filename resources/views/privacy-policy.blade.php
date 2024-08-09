@@ -3,13 +3,13 @@
         <div class="flex flex-col px-16 pt-32 pb-1 w-full bg-white max-md:px-5 max-md:pt-24 max-md:max-w-full">
             <header class="flex flex-wrap gap-5 justify-between text-4xl font-bold text-slate-800 max-md:max-w-full">
                 <h1>Privacy Policy</h1>
-                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/58f7ffd155679a1aa1626ab45c9bbfb624a6fb1b683087f313aaa6b4f84ba9d1?placeholderIfAbsent=true&apiKey=8596518292344287a6dbe083b6dc8023" alt="" class="object-contain shrink-0 self-start mt-1.5 aspect-square w-[35px]" />
+                <img onclick="history.back()"   loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/58f7ffd155679a1aa1626ab45c9bbfb624a6fb1b683087f313aaa6b4f84ba9d1?placeholderIfAbsent=true&apiKey=8596518292344287a6dbe083b6dc8023" alt="" class="object-contain shrink-0 self-start mt-1.5 aspect-square w-[35px]" />
             </header>
             <main class="mt-12 text-xl text-slate-600 max-md:mt-10 max-md:max-w-full">
                 <p>Last Updated: August 5, 2024</p>
                 <article>
                     <h2 class="font-bold text-black">1. Introduction</h2>
-                    <p>Welcome to [Your Event Name]. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you register for our event. Please read this policy carefully. If you do not agree with the terms of this Privacy Policy, please do not register for the event.</p>
+                    <p>Welcome to MOA Signing and Groundbreaking. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you register for our event. Please read this policy carefully. If you do not agree with the terms of this Privacy Policy, please do not register for the event.</p>
                 </article>
                 <article>
                     <h2 class="font-bold text-black">2. Information We Collect</h2>

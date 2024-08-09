@@ -7,7 +7,7 @@
                 <header class="flex flex-col w-full max-w-[354px]">
                     <div class="flex gap-5 justify-between text-4xl font-bold whitespace-nowrap text-slate-800">
                         <h1>Register</h1>
-                        <img @click="window.location.href = '/check-in'" loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/dd315a8c1923850d884c4603fbfa362c832e218e5c4d18cf595cee51452de1e0?placeholderIfAbsent=true&apiKey=8596518292344287a6dbe083b6dc8023" alt="" class="object-contain shrink-0 self-start aspect-square w-[35px]" />
+                        <img @click="history.back()" loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/dd315a8c1923850d884c4603fbfa362c832e218e5c4d18cf595cee51452de1e0?placeholderIfAbsent=true&apiKey=8596518292344287a6dbe083b6dc8023" alt="" class="object-contain shrink-0 self-start aspect-square w-[35px]" />
                     </div>
                     <p class="self-start mt-2 text-xl text-slate-600">Fill-out the form</p>
                 </header>

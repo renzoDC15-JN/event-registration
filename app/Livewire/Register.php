@@ -20,11 +20,10 @@ class Register extends Component
     public $last_name = '';
     #[Validate('required')]
     public $company='';
-    #[Validate('numeric|digits:10')]
     public $mobile = '';
 
     public $job_title='';
-    #[Validate('email')]
+
     public $email='';
 
     public $code='';

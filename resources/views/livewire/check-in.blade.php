@@ -75,28 +75,32 @@
 
                 <div class="mt-10 md:mt-16">
                     <!-- Dynamic Attendee Information -->
-                    <dl class="text-left">
-                        <div class="flex justify-between">
-                            <dt class="text-gray-600 ml-4 sm:ml-20 ">Name:</dt>
-                            <dd class="font-bold text-green-500 mr-4 sm:mr-20">{{$name}}</dd>
-                        </div>
-                        <div class="flex justify-between mt-5">
-                            <dt class="text-gray-600 ml-4 sm:ml-20">Company:</dt>
-                            <dd class="font-bold text-green-500 mr-4 sm:mr-20">{{$company}}</dd>
-                        </div>
-                        <div class="flex justify-between mt-5">
-                            <dt class="text-gray-600 ml-4 sm:ml-20">Job Title:</dt>
-                            <dd class="font-bold text-green-500 mr-4 sm:mr-20">{{$position}}</dd>
-                        </div>
-                        <div class="flex justify-between mt-5">
-                            <dt class="text-gray-600 ml-4 sm:ml-20">Email:</dt>
-                            <dd class="font-bold text-green-500 mr-4 sm:mr-20">{{$email}}</dd>
-                        </div>
-                        <div class="flex justify-between mt-5">
-                            <dt class="text-gray-600 ml-4 sm:ml-20">Phone Number:</dt>
-                            <dd class="font-bold text-green-500 mr-4 sm:mr-20">{{$mobile}}</dd>
-                        </div>
-                    </dl>
+                    <table class="w-full max-w-[546px] border-collapse">
+                        <tbody>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-base text-gray-600 w-[111px] text-left py-4">Name:</th>
+                            <td class="text-xl font-bold text-green-500 py-4">{{$name}}</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-base text-gray-600 w-[111px] text-left py-4">Company:</th>
+                            <td class="text-xl font-bold text-green-500 py-4">{{$company}}</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-base text-gray-600 w-[111px] text-left py-4">Job Title:</th>
+                            <td class="text-xl font-bold text-green-500 py-4">{{$position}}</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-base text-gray-600 w-[111px] text-left py-4">Email:</th>
+                            <td class="text-xl font-bold text-green-500 py-4">{{$email}}</td>
+                        </tr>
+                        <tr >
+                            <th class="text-base text-gray-600 w-[111px] text-left py-4">Phone Number:</th>
+                            <td class="text-xl font-bold text-green-500 py-4">{{$mobile}}</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
                 </div>
 
                 <div class="mt-10 flex flex-col-reverse justify-center md:flex-row sm:space-y-4 md:space-y-0 lg:sm:space-y-0 ">

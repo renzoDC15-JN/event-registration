@@ -82,6 +82,7 @@
                         <p class="self-center text-lg text-slate-600">
                             By clicking, you agree to us collecting and using your information as outlined in our <a href="/privacy-policy" class="font-bold text-blue-800 underline">Privacy Policy.</a>
                         </p>
+
                         <button type="submit" class="px-16 py-6 mt-6 text-xl font-medium text-white whitespace-nowrap bg-pink-700 rounded-3xl border-solid border-[5px] border-rose-900 border-opacity-20 max-md:px-5">
                             Submit
                         </button>
@@ -112,38 +113,47 @@
 
                 <div class="mt-10 md:mt-16">
                     <!-- Dynamic Attendee Information -->
-                    <dl class="text-left">
-                        <div class="flex justify-between">
-                            <dt class="text-gray-600 ml-4 sm:ml-20 ">Name:</dt>
-                            <dd class="font-bold text-green-500 mr-4 sm:mr-20">{{$first_name.' '.$last_name}}</dd>
-                        </div>
-                        <div class="flex justify-between mt-5">
-                            <dt class="text-gray-600 ml-4 sm:ml-20">Company:</dt>
-                            <dd class="font-bold text-green-500 mr-4 sm:mr-20">{{$company}}</dd>
-                        </div>
-                        <div class="flex justify-between mt-5">
-                            <dt class="text-gray-600 ml-4 sm:ml-20">Job Title:</dt>
-                            <dd class="font-bold text-green-500 mr-4 sm:mr-20">{{$job_title}}</dd>
-                        </div>
-                        <div class="flex justify-between mt-5">
-                            <dt class="text-gray-600 ml-4 sm:ml-20">Email:</dt>
-                            <dd class="font-bold text-green-500 mr-4 sm:mr-20">{{$email}}</dd>
-                        </div>
-                        <div class="flex justify-between mt-5">
-                            <dt class="text-gray-600 ml-4 sm:ml-20">Phone Number:</dt>
-                            <dd class="font-bold text-green-500 mr-4 sm:mr-20">{{$mobile}}</dd>
-                        </div>
-                        <div class="flex justify-between mt-5">
-                            <dt class="text-gray-600 ml-4 sm:ml-20">Code</dt>
-                            <dd class="font-bold text-green-500 mr-4 sm:mr-20">{{$code}}</dd>
-                        </div>
-                    </dl>
-                </div>
+                    <table class="w-full max-w-[546px] border-collapse">
+                        <tbody>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-base text-gray-600 w-[111px] text-left py-4">Name:</th>
+                            <td class="text-xl font-bold text-green-500 py-4">{{$first_name.' '.$last_name}}</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-base text-gray-600 w-[111px] text-left py-4">Company:</th>
+                            <td class="text-xl font-bold text-green-500 py-4">{{$company}}</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-base text-gray-600 w-[111px] text-left py-4">Job Title:</th>
+                            <td class="text-xl font-bold text-green-500 py-4">{{$job_title}}</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-base text-gray-600 w-[111px] text-left py-4">Email:</th>
+                            <td class="text-xl font-bold text-green-500 py-4">{{$email}}</td>
+                        </tr>
+                        <tr  class="border-b border-gray-200">
+                            <th class="text-base text-gray-600 w-[111px] text-left py-4">Phone Number:</th>
+                            <td class="text-xl font-bold text-green-500 py-4">{{$mobile}}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-base text-gray-600 w-[111px] text-left py-4">Code:</th>
+                            <td class="text-xl font-bold text-green-500 py-4">{{$code}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
 
                 <div class="mt-10 flex flex-col-reverse justify-center md:flex-row sm:space-y-4 md:space-y-0 lg:sm:space-y-0 ">
-                    <button @click="isOpen = false" class="mr-1 xs:mt-1 md:mt-0 lg:mt-0 xl:mt-0 bg-pink-700 text-white rounded-3xl px-8 py-3 md:px-16 md:py-6 w-full md:w-auto">
-                        Ok
-                    </button>
+                    <section class="flex flex-col text-xl font-medium text-center text-white rounded-none max-w-[326px]">
+                        <button @click="isOpen = false" type="submit" class="flex flex-row gap-7 items-center px-7 py-4 bg-pink-700 rounded-3xl border-solid border-[5px] border-rose-900 border-opacity-20">
+                            <h2 class="grow shrink my-auto w-auto text-white">Confirm & Checkin</h2>
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/707b0d6e538eb0719648b308c439f34b456f3262ce658f4a1ae6778c09e140ee?placeholderIfAbsent=true&apiKey=8596518292344287a6dbe083b6dc8023"
+                                 class="object-contain shrink-0 self-end aspect-square"
+                                 alt="Confirm and Checkin icon" />
+                        </button>
+                    </section>
+{{--                    <button  class="mr-1 xs:mt-1 md:mt-0 lg:mt-0 xl:mt-0 bg-pink-700 text-white rounded-3xl px-8 py-3 md:px-16 md:py-6 w-full md:w-auto">--}}
+{{--                        Ok--}}
+{{--                    </button>--}}
                 </div>
             </div>
         </article>

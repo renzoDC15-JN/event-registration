@@ -1,8 +1,8 @@
-<div>
+<div class="h-screen overflow-hidden">
     {{--checkin--}}
-    <section x-data="{ digit1: '', digit2: '', digit3: '', digit4: '' }" class="flex overflow-hidden flex-col justify-center items-center px-20 py-40 bg-white max-md:px-5 max-md:py-24">
-        <div class="flex relative flex-col items-center px-20 pt-20 pb-56 max-w-full min-h-[677px] w-[573px] max-md:px-5 max-md:pb-24">
-            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/d3989378be3a65f4eebf8886097a8cb4c3c669c13d49328b4218e1692af32875?apiKey=8596518292344287a6dbe083b6dc8023&&apiKey=8596518292344287a6dbe083b6dc8023" alt="" class="object-cover absolute inset-0 size-full">
+    <section x-data="{ digit1: '', digit2: '', digit3: '', digit4: '' }" class="flex flex-col justify-center items-center px-20 py-0 bg-white h-screen max-md:px-5 max-md:py-24">
+        <div class="flex relative flex-col items-center px-20 pt-20 pb-0 max-w-full min-h-[677px] w-[573px] max-md:px-5 max-md:pb-24 h-full">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/d3989378be3a65f4eebf8886097a8cb4c3c669c13d49328b4218e1692af32875?apiKey=8596518292344287a6dbe083b6dc8023&&apiKey=8596518292344287a6dbe083b6dc8023" alt="" class="object-cover absolute inset-0 w-full h-full">
             <div class="flex relative flex-col mb-0 max-w-full w-[354px] max-md:mb-2.5">
                 <header class="flex gap-5 justify-between">
                     <div class="flex flex-col">
@@ -37,7 +37,7 @@
         </div>
     </section>
     {{--checkin end--}}
-    <section x-data="{ isOpen: @entangle('isOpen') }" class="flex overflow-hidden flex-col justify-center items-center px-20 py-48 bg-black bg-opacity-10 max-md:px-5 max-md:py-24">
+    <section x-data="{ isOpen: @entangle('isOpen') }" class="flex flex-col justify-center items-center px-5 py-24 md:px-20 md:py-48 bg-black bg-opacity-10 h-screen">
         <article
             x-show="isOpen"
             x-transition:enter="transition ease-out duration-300"
@@ -49,50 +49,71 @@
             class="fixed inset-0 z-50 flex justify-center items-center"
             @click.away="isOpen = false"
         >
-            <div class="bg-white rounded-3xl shadow-2xl p-8 max-w-[670px] mx-auto">
+            <div class="bg-white rounded-3xl shadow-2xl p-5 md:p-12 max-w-[570px] min-w-[300px] w-full mx-auto">
                 <!-- Modal content -->
                 <header class="text-center">
-                    <h1 class="text-4xl font-bold text-slate-800">Confirm to Checkin</h1>
-                    <p class="mt-2.5 text-xl text-slate-600">Please review the details for accuracy and confirm.</p>
+                    <h1 class="text-2xl font-bold text-slate-800 md:text-4xl">Confirm to Checkin</h1>
+                    <p class="mt-2 text-lg text-slate-600 md:text-xl">Please review the details for accuracy and confirm.</p>
                 </header>
 
-                <div class="mt-16">
+                <div class="mt-10 md:mt-16">
                     <!-- Dynamic Attendee Information -->
                     <dl class="text-left">
                         <div class="flex justify-between">
-                            <dt class="text-gray-600">Name:</dt>
-                            <dd class="font-bold text-green-500">Charles Ley Baldemor</dd>
+                            <dt class="text-gray-600 ml-4 sm:ml-20 ">Name:</dt>
+                            <dd class="font-bold text-green-500 mr-4 sm:mr-20">{{$name}}</dd>
                         </div>
                         <div class="flex justify-between mt-5">
-                            <dt class="text-gray-600">Company:</dt>
-                            <dd class="font-bold text-green-500">Company ABC</dd>
+                            <dt class="text-gray-600 ml-4 sm:ml-20">Company:</dt>
+                            <dd class="font-bold text-green-500 mr-4 sm:mr-20">{{$company}}</dd>
                         </div>
                         <div class="flex justify-between mt-5">
-                            <dt class="text-gray-600">Job Title:</dt>
-                            <dd class="font-bold text-green-500">UXD Designer</dd>
+                            <dt class="text-gray-600 ml-4 sm:ml-20">Job Title:</dt>
+                            <dd class="font-bold text-green-500 mr-4 sm:mr-20">{{$position}}</dd>
                         </div>
                         <div class="flex justify-between mt-5">
-                            <dt class="text-gray-600">Email:</dt>
-                            <dd class="font-bold text-green-500">sample@email.com</dd>
+                            <dt class="text-gray-600 ml-4 sm:ml-20">Email:</dt>
+                            <dd class="font-bold text-green-500 mr-4 sm:mr-20">{{$email}}</dd>
                         </div>
                         <div class="flex justify-between mt-5">
-                            <dt class="text-gray-600">Phone Number:</dt>
-                            <dd class="font-bold text-green-500">09478800962</dd>
+                            <dt class="text-gray-600 ml-4 sm:ml-20">Phone Number:</dt>
+                            <dd class="font-bold text-green-500 mr-4 sm:mr-20">{{$mobile}}</dd>
                         </div>
                     </dl>
                 </div>
 
-                <div class="mt-16 flex justify-between">
-                    <button @click="isOpen = false" class="bg-pink-700 text-white rounded-3xl px-16 py-6">
+                <div class="mt-10 flex flex-col-reverse justify-center md:flex-row sm:space-y-4 md:space-y-0 lg:sm:space-y-0 ">
+                    <button @click="isOpen = false" class="mr-1 xs:mt-1 md:mt-0 lg:mt-0 xl:mt-0 bg-pink-700 text-white rounded-3xl px-8 py-3 md:px-16 md:py-6 w-full md:w-auto">
                         Cancel
                     </button>
-                    <button class="bg-pink-700 text-white rounded-3xl px-16 py-6">
+                    <button @click="" class="bg-pink-700 text-white rounded-3xl px-8 py-3 md:px-16 md:py-6 w-full md:w-auto">
                         Confirm & Checkin
                     </button>
                 </div>
             </div>
         </article>
     </section>
+    <div x-data="{ isInvalid: @entangle('isInvalid') }">
+        <!-- Modal container -->
+        <div x-show="isInvalid" x-transition class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50" @click="isInvalid = false">
+            <!-- Modal content -->
+            <section class="flex overflow-hidden flex-col justify-center px-4 py-10 mx-auto w-full text-xl text-center max-w-[480px] text-slate-800" @click.stop>
+                <article class="flex flex-col px-11 pt-4 pb-7 bg-white rounded-3xl shadow-2xl">
+                    <div id="lottie-container" class="object-contain self-start w-full aspect-[1.06]"></div>
+                    <h2 class="text-2xl font-bold self-center w-full text-slate-800">
+                        Invalid code please retry
+                    </h2>
+
+                    <!-- Optional close button inside the modal -->
+                    <button @click="isInvalid = false" class="mt-5 px-4 py-2 bg-pink-700 text-white rounded-3xl">
+                        Okay
+                    </button>
+                </article>
+            </section>
+        </div>
+    </div>
+    
+
 </div>
 <script>
     function loadLottieAnimation(jsonPath) {

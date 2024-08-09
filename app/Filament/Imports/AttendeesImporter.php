@@ -49,7 +49,6 @@ class AttendeesImporter extends Importer
 
         $attendee->pre_listed=true;
         $attendee->status_code = Status::where('description','like','Registered')->first()->code;
-        //update status to registered
 
         $attendee->save();
 

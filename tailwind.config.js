@@ -11,4 +11,11 @@ export default {
         './resources/js/**/*.vue',
         './resources/css/**/*.css',
     ],
+    theme: {
+        extend: {
+            screens: {
+                'xs': '320px', // Add custom breakpoint
+            },
+        },
+    },
 }

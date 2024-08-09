@@ -4,6 +4,7 @@ namespace App\Filament\Imports;
 
 use App\Models\Attendees;
 use App\Models\Status;
+use App\Models\Events;
 use Filament\Actions\Imports\ImportColumn;
 use Filament\Actions\Imports\Importer;
 use Filament\Actions\Imports\Models\Import;
@@ -15,6 +16,10 @@ class AttendeesImporter extends Importer
     public static function getColumns(): array
     {
         return [
+            ImportColumn::make('event_code')
+                ->label('event')
+                ->requiredMapping()
+                ->rules(['required', 'max:255']),
             ImportColumn::make('first_name')
                 ->requiredMapping()
                 ->rules(['required', 'max:255']),
@@ -46,12 +51,11 @@ class AttendeesImporter extends Importer
         );
 
         $attendee->generateUniqueCode();
-
         $attendee->pre_listed=true;
         $attendee->status_code = Status::where('description','like','Registered')->first()->code;
+        $attendee->event_code = Events::where('description',$this->data['event_code'])->first()->code??'';
 
         $attendee->save();
-
         return $attendee;
     }
 

@@ -34,11 +34,11 @@ class Register extends Component
             $attendee= Attendees::updateOrCreate(
                 [
                     'first_name'=>$this->first_name,
-                    'last_name'=>$this->first_name,
+                    'last_name'=>$this->last_name,
                 ],[
                 'first_name'=>$this->first_name,
-                'last_name'=>$this->first_name,
-                'company'=>$this->company,
+                'last_name'=>$this->last_name,
+                'company_name'=>$this->company,
                 'job_title'=>$this->job_title,
                 'email'=>$this->email,
                 'mobile'=>$this->mobile,

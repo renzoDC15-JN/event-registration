@@ -88,7 +88,6 @@ class AttendeesResource extends Resource
                     ->live()
                     ->columnSpan(4),
                 Forms\Components\TextInput::make('email')
-                    ->required()
                     ->email()
                     ->unique(ignoreRecord: true)
                     ->maxLength(255)
@@ -98,7 +97,6 @@ class AttendeesResource extends Resource
                     })
                     ->columnSpan(4),
                 Forms\Components\TextInput::make('mobile')
-                    ->required()
                     ->prefix('+63')
                     ->regex("/^[0-9]+$/")
                     ->minLength(10)

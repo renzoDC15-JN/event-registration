@@ -2,7 +2,9 @@
     {{--checkin--}}
     <section x-data="{ digit1: '', digit2: '', digit3: '', digit4: '' }" class="flex flex-col justify-center items-center px-20 py-0 bg-white h-screen max-md:px-5 max-md:py-24">
         <div class="flex relative flex-col items-center px-20 pt-20 pb-0 max-w-full min-h-[677px] w-[573px] max-md:px-5 max-md:pb-24 h-full">
-            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/d3989378be3a65f4eebf8886097a8cb4c3c669c13d49328b4218e1692af32875?apiKey=8596518292344287a6dbe083b6dc8023&&apiKey=8596518292344287a6dbe083b6dc8023" alt="" class="object-cover absolute inset-0 w-full h-full">
+            <img loading="lazy"
+                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/d3989378be3a65f4eebf8886097a8cb4c3c669c13d49328b4218e1692af32875?apiKey=8596518292344287a6dbe083b6dc8023&&apiKey=8596518292344287a6dbe083b6dc8023"
+                 alt="" class="object-cover absolute inset-0 w-full h-full">
             <div class="flex relative flex-col mb-0 max-w-full w-[354px] max-md:mb-2.5">
                 <header class="flex gap-5 justify-between">
                     <div class="flex flex-col">
@@ -14,8 +16,12 @@
                     <div class="flex gap-3.5 justify-center items-center w-full">
                         <input type="text" maxlength="1" class="flex shrink-0 self-stretch my-auto bg-orange-200 rounded-3xl h-[74px] w-[78px] text-center text-2xl" aria-label="First digit"
                                x-model="digit1" x-ref="digit1" wire:model="digit1"
-                               @input="$nextTick(() => digit1 ? $refs.digit2.focus() : null)"
+                               @input="$nextTick(() => {
+           digit1 = digit1.toUpperCase();  // Convert input to uppercase
+           digit1 ? $refs.digit2.focus() : null;
+       })"
                                @keydown.backspace="$nextTick(() => !digit1 ? $refs.digit1.blur() : null)">
+
                         <input type="text" maxlength="1" class="flex shrink-0 self-stretch my-auto bg-orange-200 rounded-3xl h-[74px] w-[78px] text-center text-2xl" aria-label="Second digit"
                                x-model="digit2" x-ref="digit2" wire:model="digit2"
                                @input="$nextTick(() => digit2 ? $refs.digit3.focus() : null)"
@@ -86,7 +92,7 @@
                     <button @click="isOpen = false" class="mr-1 xs:mt-1 md:mt-0 lg:mt-0 xl:mt-0 bg-pink-700 text-white rounded-3xl px-8 py-3 md:px-16 md:py-6 w-full md:w-auto">
                         Cancel
                     </button>
-                    <button @click="" class="bg-pink-700 text-white rounded-3xl px-8 py-3 md:px-16 md:py-6 w-full md:w-auto">
+                    <button wire:click="confirm" class="bg-pink-700 text-white rounded-3xl px-8 py-3 md:px-16 md:py-6 w-full md:w-auto">
                         Confirm & Checkin
                     </button>
                 </div>
@@ -112,7 +118,7 @@
             </section>
         </div>
     </div>
-    
+
 
 </div>
 <script>

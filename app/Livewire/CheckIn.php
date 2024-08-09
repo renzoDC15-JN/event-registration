@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Attendees;
+use App\Models\Status;
 class CheckIn extends Component
 {
     public $digit1 = '';

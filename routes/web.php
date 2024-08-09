@@ -20,6 +20,10 @@ Route::get('/check-in', function () {
     return view('check-in-landing');
 });
 
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+});
+
 //Route::get('/email', function () {
 //    return view('mail.verification-code',['attendee'=>Attendees::find(1)]);
 //});

@@ -17,7 +17,7 @@
                     </div>
                 </a>
                 <!-- Register Button -->
-                <a href="/vip-register" class="flex flex-col justify-center px-32 py-5 mt-8 w-full rounded-3xl border-solid bg-amber-400 bg-opacity-0 border-[3px] border-black border-opacity-30 min-h-[95px] max-md:px-5 cursor-pointer hover:bg-opacity-100 hover:bg-amber-500 hover:border-opacity-50 transition-colors">
+                <a href="/register" class="flex flex-col justify-center px-32 py-5 mt-8 w-full rounded-3xl border-solid bg-amber-400 bg-opacity-0 border-[3px] border-black border-opacity-30 min-h-[95px] max-md:px-5 cursor-pointer hover:bg-opacity-100 hover:bg-amber-500 hover:border-opacity-50 transition-colors">
                     <div class="flex flex-col w-full">
                         <h2 class="text-2xl font-medium text-slate-800">Register</h2>
                         <p class="self-center mt-1 text-lg text-slate-600">For Walk-in Attendees</p>

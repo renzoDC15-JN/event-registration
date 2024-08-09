@@ -1,6 +1,6 @@
 <div class="h-screen overflow-hidden">
     {{--checkin--}}
-    <section x-data="{ digit1: '', digit2: '', digit3: '', digit4: '' }" class="flex flex-col justify-center items-center py-0 bg-white h-screen ">
+    <section x-data="{ digit1: '', digit2: '', digit3: '', digit4: '' }" class="flex flex-col justify-center mt-10 items-center py-0 bg-white h-screen ">
         <div class="flex relative flex-col items-center mt-20 px-20 pt-60 pb-96 max-w-full min-h-[982px] w-[946px] max-md:px-5 max-md:py-24">
             <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/9cfca25019f567a6b607ecc1288b6060ef076528820346e22e10c624352aa22c?placeholderIfAbsent=true&apiKey=8596518292344287a6dbe083b6dc8023" alt="" class="object-cover absolute inset-0 size-full">
 

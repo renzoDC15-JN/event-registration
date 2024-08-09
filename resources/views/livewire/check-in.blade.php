@@ -1,10 +1,9 @@
 <div class="h-screen overflow-hidden">
     {{--checkin--}}
-    <section x-data="{ digit1: '', digit2: '', digit3: '', digit4: '' }" class="flex flex-col justify-center items-center px-20 py-0 bg-white h-screen max-md:px-5 max-md:py-24">
-        <div class="flex relative flex-col items-center px-20 pt-20 pb-0 max-w-full min-h-[677px] w-[573px] max-md:px-5 max-md:pb-24 h-full">
-            <img loading="lazy"
-                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/d3989378be3a65f4eebf8886097a8cb4c3c669c13d49328b4218e1692af32875?apiKey=8596518292344287a6dbe083b6dc8023&&apiKey=8596518292344287a6dbe083b6dc8023"
-                 alt="" class="object-cover absolute inset-0 w-full h-full">
+    <section x-data="{ digit1: '', digit2: '', digit3: '', digit4: '' }" class="flex flex-col justify-center items-center py-0 bg-white h-screen ">
+        <div class="flex relative flex-col items-center px-20 pt-60 pb-96 max-w-full min-h-[982px] w-[946px] max-md:px-5 max-md:py-24">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/9cfca25019f567a6b607ecc1288b6060ef076528820346e22e10c624352aa22c?placeholderIfAbsent=true&apiKey=8596518292344287a6dbe083b6dc8023" alt="" class="object-cover absolute inset-0 size-full">
+
             <div class="flex relative flex-col mb-0 max-w-full w-[354px] max-md:mb-2.5">
                 <header class="flex gap-5 justify-between">
                     <div class="flex flex-col">

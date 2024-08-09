@@ -42,6 +42,7 @@ class AttendeesImporter extends Importer
 
     public function resolveRecord(): ?Attendees
     {
+        $this->data['event_code']=Events::where('description',$this->data['event_code'])->first()->code??'';
         $attendee = Attendees::updateOrCreate(
             [
                 'first_name' => $this->data['first_name'],
@@ -53,9 +54,9 @@ class AttendeesImporter extends Importer
         $attendee->generateUniqueCode();
         $attendee->pre_listed=true;
         $attendee->status_code = Status::where('description','like','Registered')->first()->code;
-        $attendee->event_code = Events::where('description',$this->data['event_code'])->first()->code??'';
-
+        $attendee->event_code = $this->data['event_code'];
         $attendee->save();
+
         return $attendee;
     }
 

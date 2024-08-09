@@ -73,7 +73,7 @@
                         <label for="mobile" class="self-stretch my-auto text-sm leading-none text-gray-400">+63</label>
                         <input  x-on:input="validate($event)"
                                 x-on:keypress="validate($event)"
-                                x-on:paste="validate($event)" type="text" id="mobile" maxlength="10"  name="mobile" wire:model="mobile" class="flex-1 shrink gap-2.5 self-stretch px-3.5 py-2.5 my-auto w-full bg-white rounded-lg shadow-sm min-w-[240px]" required />
+                                x-on:paste="validate($event)" type="text" id="mobile" maxlength="10"  name="mobile" wire:model="mobile" class="flex-1 shrink gap-2.5 self-stretch px-3.5 py-2.5 my-auto w-full bg-white rounded-lg shadow-sm min-w-[240px]" />
                     </div>
                     <div clas="flex gap-1 items-start w-full">
                         @error('mobile') <span class="text-sm font-medium leading-none text-rose-700">{{ $message }}</span> @enderror

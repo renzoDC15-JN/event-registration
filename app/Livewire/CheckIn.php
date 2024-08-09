@@ -58,7 +58,7 @@ class CheckIn extends Component
     public function confirm(){
         $this->isOpen=false;
         $attendee = Attendees::find($this->id);
-        $attendee->status_code = Status::where('description','like','Confirmed')->first()->code;
+        $attendee->status_code = Status::where('description','like','Check')->first()->code;
         $attendee->save();
     }
 

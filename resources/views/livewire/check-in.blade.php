@@ -17,23 +17,35 @@
                         <input type="text" maxlength="1" class="flex shrink-0 self-stretch my-auto bg-orange-200 rounded-3xl h-[74px] w-[78px] text-center text-2xl" aria-label="First digit"
                                x-model="digit1" x-ref="digit1" wire:model="digit1"
                                @input="$nextTick(() => {
-           digit1 = digit1.toUpperCase();  // Convert input to uppercase
+           digit1 = digit1.toUpperCase();
            digit1 ? $refs.digit2.focus() : null;
        })"
                                @keydown.backspace="$nextTick(() => !digit1 ? $refs.digit1.blur() : null)">
 
                         <input type="text" maxlength="1" class="flex shrink-0 self-stretch my-auto bg-orange-200 rounded-3xl h-[74px] w-[78px] text-center text-2xl" aria-label="Second digit"
                                x-model="digit2" x-ref="digit2" wire:model="digit2"
-                               @input="$nextTick(() => digit2 ? $refs.digit3.focus() : null)"
+                               @input="$nextTick(() => {
+           digit2 = digit2.toUpperCase();
+           digit2 ? $refs.digit3.focus() : null;
+       })"
                                @keydown.backspace="$nextTick(() => !digit2 ? $refs.digit1.focus() : null)">
+
                         <input type="text" maxlength="1" class="flex shrink-0 self-stretch my-auto bg-orange-200 rounded-3xl h-[74px] w-[78px] text-center text-2xl" aria-label="Third digit"
                                x-model="digit3" x-ref="digit3" wire:model="digit3"
-                               @input="$nextTick(() => digit3 ? $refs.digit4.focus() : null)"
+                               @input="$nextTick(() => {
+           digit3 = digit3.toUpperCase();
+           digit3 ? $refs.digit4.focus() : null;
+       })"
                                @keydown.backspace="$nextTick(() => !digit3 ? $refs.digit2.focus() : null)">
+
                         <input type="text" maxlength="1" class="flex shrink-0 self-stretch my-auto bg-orange-200 rounded-3xl h-[74px] w-[78px] text-center text-2xl" aria-label="Fourth digit"
                                x-model="digit4" x-ref="digit4" wire:model="digit4"
-                               @input="$nextTick(() => digit4 ? null : null)"
+                               @input="$nextTick(() => {
+           digit4 = digit4.toUpperCase();
+           digit4 ? null : null;
+       })"
                                @keydown.backspace="$nextTick(() => !digit4 ? $refs.digit3.focus() : null)">
+
                     </div>
                     <button type="submit" class="mt-10 px-16 py-6 bg-pink-700 rounded-3xl border-solid border-[5px] border-rose-900 border-opacity-20 text-xl font-medium text-center text-white whitespace-nowrap max-md:px-5">
                         Submit

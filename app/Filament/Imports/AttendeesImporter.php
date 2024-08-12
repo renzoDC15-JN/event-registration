@@ -5,6 +5,7 @@ namespace App\Filament\Imports;
 use App\Models\Attendees;
 use App\Models\Status;
 use App\Models\Events;
+use App\Models\Group;
 use Filament\Actions\Imports\ImportColumn;
 use Filament\Actions\Imports\Importer;
 use Filament\Actions\Imports\Models\Import;
@@ -20,22 +21,32 @@ class AttendeesImporter extends Importer
                 ->label('event')
                 ->requiredMapping()
                 ->rules(['required', 'max:255']),
-            ImportColumn::make('first_name')
+
+
+            ImportColumn::make('full_name')
                 ->requiredMapping()
                 ->rules(['required', 'max:255']),
-            ImportColumn::make('last_name')
+
+            ImportColumn::make('group_code')
+                ->label('group')
                 ->requiredMapping()
                 ->rules(['required', 'max:255']),
-            ImportColumn::make('email')
-                ->requiredMapping()
-                ->rules([ 'email', 'max:255']),
+//            ImportColumn::make('first_name')
+//                ->requiredMapping()
+//                ->rules(['required', 'max:255']),
+//            ImportColumn::make('last_name')
+//                ->requiredMapping()
+//                ->rules(['required', 'max:255']),
+//            ImportColumn::make('email')
+//                ->requiredMapping()
+//                ->rules([ 'email', 'max:255']),
             ImportColumn::make('mobile')
                 ->guess(['mobile','Phone number'])
-                ->rules(['numeric','digits:10']),
-            ImportColumn::make('job_title')
-                ->rules(['max:255']),
-            ImportColumn::make('company_name')
-                ->rules(['required','max:255']),
+                ->rules(['required','numeric','digits:10']),
+//            ImportColumn::make('job_title')
+//                ->rules(['max:255']),
+//            ImportColumn::make('company_name')
+//                ->rules(['required','max:255']),
 
         ];
     }
@@ -43,18 +54,21 @@ class AttendeesImporter extends Importer
     public function resolveRecord(): ?Attendees
     {
         $this->data['event_code']=Events::where('description',$this->data['event_code'])->first()->code??'';
+        $this->data['group_code']=Group::where('description',$this->data['group_code'])->first()->code??'';
         $attendee = Attendees::updateOrCreate(
             [
-                'first_name' => $this->data['first_name'],
-                'last_name' => $this->data['last_name'],
+                'full_name' => $this->data['full_name'],
+                'event_code' => $this->data['event_code'],
+                'group_code' => $this->data['group_code'],
             ], // Attributes to find the record
            $this->data   // Attributes to update or set for the new record
         );
 
-        $attendee->generateUniqueCode();
+//        $attendee->generateUniqueCode();
         $attendee->pre_listed=true;
         $attendee->status_code = Status::where('description','like','Registered')->first()->code;
         $attendee->event_code = $this->data['event_code'];
+        $attendee->group_code = $this->data['group_code'];
         $attendee->save();
 
         return $attendee;

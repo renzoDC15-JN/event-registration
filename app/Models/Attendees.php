@@ -26,6 +26,7 @@ class Attendees extends Model
         'table_code',
         'first_name',
         'last_name',
+        'full_name',
         'company_name',
         'job_title',
         'email',

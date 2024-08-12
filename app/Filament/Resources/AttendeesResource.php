@@ -39,64 +39,79 @@ class AttendeesResource extends Resource
                             ->inline(false)
                             ->live()
                             ->columnSpan(1),
-                        Forms\Components\TextInput::make('attendee_code')
-                            ->label('Attendee Code')
-                            ->helperText('generated upon registration')
-                            ->unique(ignoreRecord: true)
-                            ->maxLength(4)
-                            ->live()
-                            ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire, Forms\Components\TextInput $component) {
-                                $livewire->validateOnly($component->getStatePath());
-                            })
-                            ->readOnly()
-                            ->columnSpan(2),
-                        Forms\Components\Select::make('event_code')
-                            ->label('Event')
-                            ->native(false)
-                            ->relationship(name: 'event', titleAttribute: 'description')
-                            ->columnSpan(3),
+//                        Forms\Components\TextInput::make('attendee_code')
+//                            ->label('Attendee Code')
+//                            ->helperText('generated upon registration')
+//                            ->unique(ignoreRecord: true)
+//                            ->maxLength(4)
+//                            ->live()
+//                            ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire, Forms\Components\TextInput $component) {
+//                                $livewire->validateOnly($component->getStatePath());
+//                            })
+//                            ->readOnly()
+//                            ->columnSpan(4),
                         Forms\Components\Select::make('status_code')
                             ->label('Status')
                             ->native(false)
                             ->relationship(name: 'status', titleAttribute: 'description')
                             ->columnSpan(3),
+                        Forms\Components\Select::make('event_code')
+                            ->label('Event')
+                            ->native(false)
+                            ->relationship(name: 'event', titleAttribute: 'description')
+                            ->columnSpan(4),
+
                         Forms\Components\Select::make('table_code')
                             ->label('Table')
                             ->native(false)
                             ->relationship(name: 'venueTable', titleAttribute: 'description')
-                            ->columnSpan(3),
+                            ->columnSpan(4),
+
 
                     ])->columns(12)->columnSpanfull(),
-                Forms\Components\TextInput::make('first_name')
-                    ->label('First Name')
+                Forms\Components\TextInput::make('full_name')
+                    ->label('Full Name')
                     ->autocapitalize('words')
                     ->required()
                     ->maxLength(255)
                     ->live()
                     ->columnSpan(4),
-                Forms\Components\TextInput::make('last_name')
-                    ->label('Last Name')
-                    ->autocapitalize('words')
-                    ->required()
-                    ->maxLength(255)
-                    ->live()
+                Forms\Components\Select::make('group_code')
+                    ->label('Group')
+                    ->native(false)
+                    ->relationship(name: 'group', titleAttribute: 'description')
                     ->columnSpan(4),
-                Forms\Components\TextInput::make('job_title')
-                    ->label('Job Title')
-                    ->autocapitalize('words')
-                    ->maxLength(255)
-                    ->live()
-                    ->columnSpan(4),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->unique(ignoreRecord: true)
-                    ->maxLength(255)
-                    ->live()
-                    ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire, Forms\Components\TextInput $component) {
-                        $livewire->validateOnly($component->getStatePath());
-                    })
-                    ->columnSpan(4),
+//                Forms\Components\TextInput::make('first_name')
+//                    ->label('First Name')
+//                    ->autocapitalize('words')
+//                    ->required()
+//                    ->maxLength(255)
+//                    ->live()
+//                    ->columnSpan(4),
+//                Forms\Components\TextInput::make('last_name')
+//                    ->label('Last Name')
+//                    ->autocapitalize('words')
+//                    ->required()
+//                    ->maxLength(255)
+//                    ->live()
+//                    ->columnSpan(4),
+//                Forms\Components\TextInput::make('job_title')
+//                    ->label('Job Title')
+//                    ->autocapitalize('words')
+//                    ->maxLength(255)
+//                    ->live()
+//                    ->columnSpan(4),
+//                Forms\Components\TextInput::make('email')
+//                    ->email()
+//                    ->unique(ignoreRecord: true)
+//                    ->maxLength(255)
+//                    ->live()
+//                    ->afterStateUpdated(function (Forms\Contracts\HasForms $livewire, Forms\Components\TextInput $component) {
+//                        $livewire->validateOnly($component->getStatePath());
+//                    })
+//                    ->columnSpan(4),
                 Forms\Components\TextInput::make('mobile')
+                    ->required()
                     ->prefix('+63')
                     ->regex("/^[0-9]+$/")
                     ->minLength(10)
@@ -106,13 +121,13 @@ class AttendeesResource extends Resource
                         $livewire->validateOnly($component->getStatePath());
                     })
                     ->columnSpan(4),
-
-                Forms\Components\TextInput::make('company_name')
-                    ->label('Company Name')
-                    ->autocapitalize('words')
-                    ->maxLength(255)
-                    ->live()
-                    ->columnSpan(4),
+//
+//                Forms\Components\TextInput::make('company_name')
+//                    ->label('Company Name')
+//                    ->autocapitalize('words')
+//                    ->maxLength(255)
+//                    ->live()
+//                    ->columnSpan(4),
 
             ])->columns(12);
     }
@@ -133,28 +148,31 @@ class AttendeesResource extends Resource
                     ->searchable(),
                 Tables\Columns\IconColumn::make('pre_listed')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('attendee_code')
-                    ->label('Code')
+                Tables\Columns\TextColumn::make('group.description')
+                    ->label('Group')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('venueTable.description')
                     ->label('Table')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('first_name')
-                    ->label('First Name')
+                Tables\Columns\TextColumn::make('full_name')
+                    ->label('Full Name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('last_name')
-                    ->label('Last Name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('company_name')
-                    ->label('Company')
-                    ->words(5)
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('job_title')
-                    ->label('Job Title')
-                    ->words(5)
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
+//                Tables\Columns\TextColumn::make('first_name')
+//                    ->label('First Name')
+//                    ->searchable(),
+//                Tables\Columns\TextColumn::make('last_name')
+//                    ->label('Last Name')
+//                    ->searchable(),
+//                Tables\Columns\TextColumn::make('company_name')
+//                    ->label('Company')
+//                    ->words(5)
+//                    ->searchable(),
+//                Tables\Columns\TextColumn::make('job_title')
+//                    ->label('Job Title')
+//                    ->words(5)
+//                    ->searchable(),
+//                Tables\Columns\TextColumn::make('email')
+//                    ->searchable(),
                 Tables\Columns\TextColumn::make('mobile')
                     ->searchable(),
 

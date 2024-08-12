@@ -12,6 +12,7 @@
         "filament/filament": "^3.2",
         "filament/notifications": "^3.2",
         "howdu/filament-record-switcher": "^1.0",
+        "lara-zeus/qr": "^1.1",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "lbhurtado/engagespark": "^3.7",

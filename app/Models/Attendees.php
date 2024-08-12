@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Status;
 use App\Models\Events;
 use App\Models\VenueTables;
+use App\Models\Group;
 
 class Attendees extends Model
 {
@@ -21,6 +22,7 @@ class Attendees extends Model
     protected $fillable = [
         'event_code',
         'status_code',
+        'group_code',
         'pre_listed',
         'attendee_code',
         'table_code',
@@ -56,6 +58,12 @@ class Attendees extends Model
     {
         return $this->belongsTo(VenueTables::class, 'table_code', 'code');
     }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class, 'group_code', 'code');
+    }
+
 
     public function generateUniqueCode():void
     {

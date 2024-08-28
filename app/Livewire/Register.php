@@ -26,8 +26,14 @@ class Register extends Component
     #[Validate('required')]
     public $selected_group;
 
+    public $table='';
+
+    //Required if others
+    public $group_name;
+
     public $event_code;
     public $event_name;
+    public $event;
 
     public $groups;
 
@@ -46,12 +52,14 @@ class Register extends Component
                 [
                     'full_name'=>$this->full_name,
                     'group_code'=>$this->selected_group,
+                    'other_group_name'=>$this->group_name,
                     'event_code'=>$this->event_code,
+                    'table_code'=>$this->event->getAvailableTable()
                 ],['mobile'=>$this->mobile,]);
 
             $attendee->status_code = Status::where('description','like','Check-in')->first()->code;
-            $attendee->generateUniqueCode();
-            $this->code = $attendee->attendee_code;
+            $this->table=$attendee->table_code;
+            // $attendee->generateUniqueCode();
             $attendee->save();
             $this->isOpen=true;
 
@@ -60,9 +68,9 @@ class Register extends Component
 
     public function mount($enc_id=null)
     {
-        $event = Events::findOrFail(Crypt::decrypt($enc_id));
-        $this->event_code = $event->code;
-        $this->event_name = $event->description;
+        $this->event =Events::findOrFail(Crypt::decrypt($enc_id));
+        $this->event_code = $this->event->code;
+        $this->event_name = $this->event->description;
         $this->groups = Group::all();
     }
 

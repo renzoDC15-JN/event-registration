@@ -23,6 +23,7 @@ class Attendees extends Model
         'event_code',
         'status_code',
         'group_code',
+        'other_group_name',
         'pre_listed',
         'attendee_code',
         'table_code',
@@ -37,6 +38,10 @@ class Attendees extends Model
 
     protected $casts = [
         'pre_listed'=>'boolean',
+    ];
+
+    protected $appends = [
+        'attendee_group'
     ];
 
     public function routeNotificationForEngageSpark()
@@ -54,15 +59,23 @@ class Attendees extends Model
         return $this->belongsTo(Events::class, 'event_code', 'code');
     }
 
-    public function venueTable()
+    public function table()
     {
-        return $this->belongsTo(VenueTables::class, 'table_code', 'code');
+        return $this->belongsTo(EventsTable::class, 'table_code', 'description');
     }
 
     public function group()
     {
         return $this->belongsTo(Group::class, 'group_code', 'code');
     }
+
+    public function getAttendeeGroupAttribute(): string
+    {
+        return $this->group_code == Group::where('description', 'Others')->first()->code
+            ? ($this->other_group_name ?? '')
+            : ($this->group_code ?? '');
+    }
+
 
 
     public function generateUniqueCode():void

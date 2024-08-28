@@ -23,6 +23,9 @@ class VIPRegistration extends Component
     #[Validate('required')]
     public $selected_group;
 
+    //Required if others
+    public $group_name;
+
 
     public $isOpen = false;
     public $status =0;
@@ -54,9 +57,19 @@ class VIPRegistration extends Component
 //            $attendee->notify(new SmsCodeNotification($attendee));
 
         }else{
+
+            Attendees::create([
+                'full_name' => $this->full_name,
+                'group_code' => $this->selected_group,
+                'other_group_name' => $this->group_name,
+                'mobile' => $this->mobile,
+                'pre_listed' => 1,
+                'event_code' => $this->event_code,
+                'status_code' => Status::where('description','like','Pre-listed')->first()->code
+            ]);
             $this->isOpen=true;
-            $this->status=0;
-            $this->json_path = asset('lottie_files/no_data.json');
+            $this->status=1;
+            $this->json_path = asset('lottie_files/success.json');
             $this->dispatch('trigger_animation');
         }
     }

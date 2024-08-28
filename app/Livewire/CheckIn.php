@@ -31,6 +31,7 @@ class CheckIn extends Component
 //    public $email='';
     public $mobile='';
     public $full_name='';
+    public $table='';
     public $enc_id;
 
     public $event_code;
@@ -53,6 +54,8 @@ class CheckIn extends Component
 //            $this->email = $attendee->email;
             $this->full_name = $attendee->full_name;
             $this->mobile ='+63'. $attendee->mobile;
+            $this->table = $attendee->table_code;
+
 
             $this->isOpen = true; // Open the modal
         } else {

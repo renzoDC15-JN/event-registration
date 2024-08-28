@@ -16,5 +16,6 @@ class GroupSeeder extends Seeder
         Group::updateOrCreate(['code' => 'LGU', 'description'=>'Local Goverment Unit']);
         Group::updateOrCreate(['code' => 'HDMF', 'description'=>'Home Development Mutual Fund']);
         Group::updateOrCreate(['code' => 'DHSUD', 'description'=>'Department of Human Settlements and Urban Development']);
+        Group::updateOrCreate(['code' => 'OTH', 'description'=>'Others']);
     }
 }

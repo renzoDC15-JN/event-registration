@@ -114,7 +114,10 @@
                             <th class="text-base text-gray-600 w-[111px] text-left py-4">Phone Number:</th>
                             <td class="text-xl font-bold text-green-500 py-4">{{$mobile}}</td>
                         </tr>
-
+                        <tr >
+                            <th class="text-base text-gray-600 w-[111px] text-left py-4">Table:</th>
+                            <td class="text-xl font-bold text-green-500 py-4">{{$table}}</td>
+                        </tr>
                         </tbody>
                     </table>
 

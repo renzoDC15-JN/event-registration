@@ -6,7 +6,7 @@
         <p class="self-start mt-2.5 text-xl text-slate-600">Event confirmation</p>
     </div>
     <div class="flex relative flex-col px-5 pt-6 pb-20 mt-1 w-full aspect-[0.961]">
-        <img loading="lazy" src="{{asset('images/registration-bg.png')}}" alt="" class="object-cover absolute inset-0 size-full" />
+        <img loading="lazy" src="{{asset('images/registration-bg.png')}}" alt="" class="object-cover absolute inset-0 size-full h-screen" />
         <div class="flex relative flex-col w-full">
             <div class="flex gap-1 items-start w-full">
                 <label for="full_name" class="text-base text-slate-600">Full Name</label>
@@ -102,9 +102,23 @@
 
 
             </div>
-            <div class="flex gap-1 items-start w-full">
+            <div class="flex gap-1 items-start w-full mt-1.5">
                 @error('selected_group') <span class="text-sm font-medium leading-none text-rose-700">{{ $message }}</span> @enderror
             </div>
+            {{-- Group name, required if Others --}}
+            @if($selected_group == \App\Models\Group::where('description', 'Others')->value('code') && $selected_group != '')
+                <div class="flex gap-1 items-start w-full mt-7">
+                    <label for="group_name" class="text-base text-slate-600">Group Name</label>
+                    <span class="text-sm font-medium leading-none text-rose-700">*</span>
+                </div>
+                <div class="flex gap-2 items-center mt-1.5 w-full text-base text-gray-900 whitespace-nowrap border-black">
+                    <input placeholder="Group Name" type="text" id="group_name" name="group_name" wire:model="group_name" class="flex-1 shrink gap-2.5 self-stretch px-3.5 py-2.5 my-auto w-full bg-white rounded-lg shadow-sm min-w-[240px]" required />
+                </div>
+                <div clas="flex gap-1 items-start w-full">
+                    @error('group_name') <span class="text-sm font-medium leading-none text-rose-700">{{ $message }}</span> @enderror
+                </div>
+            @endif
+            {{-- Group name --}}
             <div class="flex gap-1 items-start w-full mt-7">
                 <label for="mobile" class="text-base text-slate-600">Phone Number</label>
                 <span class="text-sm font-medium leading-none text-rose-700">*</span>

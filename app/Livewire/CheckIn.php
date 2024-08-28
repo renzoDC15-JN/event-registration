@@ -70,9 +70,14 @@ class CheckIn extends Component
 
     public function confirm(){
         $this->isOpen=false;
+
         $attendee = Attendees::find($this->id);
         $attendee->status_code = Status::where('description','like','Check-in')->first()->code;
         $attendee->save();
+        $this->json_path = asset('lottie_files/success.json');
+        $this->dispatch('trigger_animation');
+        $this->isInvalid=true;
+        $this->status = 1; // Handle invalid code
     }
 
 //    protected function resetDigits()

@@ -161,8 +161,8 @@
                         <div class="bg-white rounded-3xl shadow-2xl p-5 md:p-12 max-w-[570px] min-w-[300px] w-full mx-auto">
                             <!-- Modal content -->
                             <header class="text-center">
-                                <h1 class="text-2xl font-bold text-slate-800 md:text-4xl">Confirm to Checkin</h1>
-                                <p class="mt-2 text-lg text-slate-600 md:text-xl">Please review the details for accuracy and confirm.</p>
+                                <h1 class="text-2xl font-bold text-slate-800 md:text-4xl">Confirmed CheckedIn</h1>
+                                <p class="mt-2 text-lg text-slate-600 md:text-xl">You may screenshot this page for the table assignment.</p>
                             </header>
 
                             <div class="mt-10 md:mt-16">
@@ -187,7 +187,7 @@
                                 <div class="mt-10 flex flex-col-reverse justify-center md:flex-row sm:space-y-4 md:space-y-0 lg:sm:space-y-0">
                                     <section class="flex flex-col text-xl font-medium text-center text-white rounded-none max-w-[326px]">
                                         <button @click="isOpen = false" type="submit" class="flex flex-row gap-7 items-center px-7 py-4 bg-pink-700 rounded-3xl border-solid border-[5px] border-rose-900 border-opacity-20">
-                                            <h2 class="grow shrink my-auto w-auto text-white">Confirm & Checkin</h2>
+                                            <h2 class="grow shrink my-auto w-auto text-white">Okay</h2>
                                             <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/707b0d6e538eb0719648b308c439f34b456f3262ce658f4a1ae6778c09e140ee?placeholderIfAbsent=true&apiKey=8596518292344287a6dbe083b6dc8023"
                                                 class="object-contain shrink-0 self-end aspect-square"
                                                 alt="Confirm and Checkin icon" />
@@ -198,6 +198,7 @@
                         </div>
                     </article>
                 </section>
+
             </div>
         </div>
     </section>

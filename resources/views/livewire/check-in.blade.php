@@ -98,18 +98,6 @@
                             <th class="text-base text-gray-600 w-[111px] text-left py-4">Name:</th>
                             <td class="text-xl font-bold text-green-500 py-4">{{$full_name}}</td>
                         </tr>
-{{--                        <tr class="border-b border-gray-200">--}}
-{{--                            <th class="text-base text-gray-600 w-[111px] text-left py-4">Company:</th>--}}
-{{--                            <td class="text-xl font-bold text-green-500 py-4">{{$company}}</td>--}}
-{{--                        </tr>--}}
-{{--                        <tr class="border-b border-gray-200">--}}
-{{--                            <th class="text-base text-gray-600 w-[111px] text-left py-4">Job Title:</th>--}}
-{{--                            <td class="text-xl font-bold text-green-500 py-4">{{$position}}</td>--}}
-{{--                        </tr>--}}
-{{--                        <tr class="border-b border-gray-200">--}}
-{{--                            <th class="text-base text-gray-600 w-[111px] text-left py-4">Email:</th>--}}
-{{--                            <td class="text-xl font-bold text-green-500 py-4">{{$email}}</td>--}}
-{{--                        </tr>--}}
                         <tr >
                             <th class="text-base text-gray-600 w-[111px] text-left py-4">Phone Number:</th>
                             <td class="text-xl font-bold text-green-500 py-4">{{$mobile}}</td>
@@ -140,10 +128,39 @@
             <!-- Modal content -->
             <section class="flex overflow-hidden flex-col justify-center px-4 py-10 mx-auto w-full text-xl text-center max-w-[480px] text-slate-800" @click.stop>
                 <article class="flex flex-col px-11 pt-4 pb-7 bg-white rounded-3xl shadow-2xl">
-                    <div id="lottie-container" class="object-contain self-start w-full aspect-[1.06]"></div>
-                    <h2 class="text-2xl font-bold self-center w-full text-slate-800">
-                        Invalid code please retry
-                    </h2>
+                    @if ($status == 0)
+                        <div id="lottie-container" class="object-contain self-start w-full aspect-[1.06]"></div>
+
+                        <h2 class="text-2xl font-bold self-center w-full text-slate-800">
+                            Invalid code please retry
+                        </h2>
+                    @elseif ($status == 1)
+                        <header class="text-center">
+                            <h1 class="text-2xl font-bold text-slate-800 md:text-4xl">Confirmed CheckedIn</h1>
+                            <p class="mt-2 text-lg text-slate-600 md:text-xl">You may screenshot this page for the table assignment</p>
+                        </header>
+                        <div class="mt-10 md:mt-16">
+                            <!-- Dynamic Attendee Information -->
+                            <table class="w-full max-w-[546px] border-collapse">
+                                <tbody>
+                                <tr class="border-b border-gray-200">
+                                    <th class="text-base text-gray-600 w-[111px] text-left py-4">Name:</th>
+                                    <td class="text-xl font-bold text-green-500 py-4">{{$full_name}}</td>
+                                </tr>
+                                <tr >
+                                    <th class="text-base text-gray-600 w-[111px] text-left py-4">Phone Number:</th>
+                                    <td class="text-xl font-bold text-green-500 py-4">{{$mobile}}</td>
+                                </tr>
+                                <tr >
+                                    <th class="text-base text-gray-600 w-[111px] text-left py-4">Table:</th>
+                                    <td class="text-xl font-bold text-green-500 py-4">{{$table}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    @endif
 
                     <!-- Optional close button inside the modal -->
                     <button @click="isInvalid = false" class="mt-5 px-4 py-2 bg-pink-700 text-white rounded-3xl">
@@ -153,7 +170,6 @@
             </section>
         </div>
     </div>
-
 
 </div>
 <script>

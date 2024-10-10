@@ -9,7 +9,7 @@
                 <p>Last Updated: August 5, 2024</p>
                 <article>
                     <h2 class="font-bold text-black">1. Introduction</h2>
-                    <p>Welcome to MOA Signing and Groundbreaking. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you register for our event. Please read this policy carefully. If you do not agree with the terms of this Privacy Policy, please do not register for the event.</p>
+                    <p>We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you register for our event. Please read this policy carefully. If you do not agree with the terms of this Privacy Policy, please do not register for the event.</p>
                 </article>
                 <article>
                     <h2 class="font-bold text-black">2. Information We Collect</h2>

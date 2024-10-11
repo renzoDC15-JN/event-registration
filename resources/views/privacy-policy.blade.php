@@ -16,7 +16,7 @@
                     <p>We may collect the following types of information when you register for our event:</p>
                     <ul>
                         <li>Personal Information: Name, email address, phone number, and any other information you provide during registration.</li>
-                        <li>Event-Specific Information: Attendance preferences, dietary restrictions, special accommodations, and other relevant details.</li>
+                        <li>Event-Specific Information: Attendance preferences and other relevant details.</li>
                     </ul>
                 </article>
                 <article>
